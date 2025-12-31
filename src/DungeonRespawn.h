@@ -28,6 +28,7 @@ struct PlayerRespawnData
 std::vector<PlayerRespawnData> respawnData;
 
 bool drEnabled;
+bool drDebug;
 float respawnHpPct;
 
 class DSPlayerScript : public PlayerScript
@@ -42,10 +43,10 @@ private:
     PlayerRespawnData* GetOrCreateRespawnData(Player* /*player*/);
     void CreateRespawnData(Player* /*player*/);
     void OnPlayerReleasedGhost(Player* /*player*/) override;
-    bool OnBeforeTeleport(Player* /*player*/, uint32 /*mapid*/, float /*x*/, float /*y*/, float /*z*/, float /*orientation*/, uint32 /*options*/, Unit* /*target*/) override;
-    void OnMapChanged(Player* /*player*/) override;
-    void OnLogin(Player* /*player*/) override;
-    void OnLogout(Player* /*player*/) override;
+    bool OnPlayerBeforeTeleport(Player* /*player*/, uint32 /*mapid*/, float /*x*/, float /*y*/, float /*z*/, float /*orientation*/, uint32 /*options*/, Unit* /*target*/) override;
+    void OnPlayerMapChanged(Player* /*player*/) override;
+    void OnPlayerLogin(Player* /*player*/) override;
+    void OnPlayerLogout(Player* /*player*/) override;
 };
 
 class DSWorldScript : public WorldScript
